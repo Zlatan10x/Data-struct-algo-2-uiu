@@ -1,15 +1,15 @@
 #include<bits/stdc++.h>
 using namespace std;
-struct Active{
+struct Active
+{
     int start,finish,index;
 };
-
 bool cmp(const Active &a,const Active &b)
 {
     return a.finish<b.finish;
 }
 
-vector<int> selection(vector<Active>& activities)
+vector<int> selection(vector<Active> &activities)
 {
     sort(activities.begin(),activities.end(),cmp);
 
@@ -23,7 +23,6 @@ vector<int> selection(vector<Active>& activities)
             selected.push_back(act.index);
             lastfinish = act.finish;
         }
-
     }
     return selected;
 }
@@ -31,25 +30,23 @@ vector<int> selection(vector<Active>& activities)
 int main()
 {
     int n;
-    cout << "Enter the number off acitivities you want : ";
+    cout << "Number of activities you want in your routine : ";
     cin >> n;
+
     vector<Active> activities(n);
-    cout << "Enter the start and end time of " << n << "activities (0 5) :";
+
+    cout << "Enter your activities by their start time and end time(0 4) :";
     for(int i=0;i<n;i++)
     {
         cin >> activities[i].start >> activities[i].finish;
         activities[i].index = i+1;
-
     }
 
-    vector<int> res = selection(activities);
-
-    for(int idx : res)
+    vector<int> result = selection(activities);
+    for(int idx : result)
     {
         cout << idx << "";
-        cout << endl;
+      cout << endl;
     }
     return 0;
-
-
 }
